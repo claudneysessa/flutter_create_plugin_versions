@@ -29,7 +29,7 @@ android {
         namespace 'com.example.flutter_create_plugin_versions'
     }
 
-    compileSdkVersion 33
+    compileSdk 34
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
