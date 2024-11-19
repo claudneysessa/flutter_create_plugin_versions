@@ -4,7 +4,7 @@ version: 0.0.1
 homepage:
 
 environment:
-  sdk: ">=2.15.1 <3.0.0"
+  sdk: ">=2.16.0 <3.0.0"
   flutter: ">=2.5.0"
 
 dependencies:
@@ -31,6 +31,8 @@ flutter:
         package: com.example.flutter_create_plugin_versions
         pluginClass: FlutterCreatePluginVersionsPlugin
       ios:
+        pluginClass: FlutterCreatePluginVersionsPlugin
+      windows:
         pluginClass: FlutterCreatePluginVersionsPlugin
 
   # To add assets to your plugin package, add an assets section, like this:
