@@ -20,7 +20,6 @@ class FlutterCreatePluginVersionsPlugin : public flutter::Plugin {
   FlutterCreatePluginVersionsPlugin(const FlutterCreatePluginVersionsPlugin&) = delete;
   FlutterCreatePluginVersionsPlugin& operator=(const FlutterCreatePluginVersionsPlugin&) = delete;
 
- private:
   // Called when a method is called on this plugin's channel from Dart.
   void HandleMethodCall(
       const flutter::MethodCall<flutter::EncodableValue> &method_call,

@@ -3,19 +3,22 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_create_plugin_versions/flutter_create_plugin_versions_method_channel.dart';
 
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
+
   MethodChannelFlutterCreatePluginVersions platform = MethodChannelFlutterCreatePluginVersions();
   const MethodChannel channel = MethodChannel('flutter_create_plugin_versions');
 
-  TestWidgetsFlutterBinding.ensureInitialized();
-
   setUp(() {
-    channel.setMockMethodCallHandler((MethodCall methodCall) async {
-      return '42';
-    });
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger.setMockMethodCallHandler(
+      channel,
+      (MethodCall methodCall) async {
+        return '42';
+      },
+    );
   });
 
   tearDown(() {
-    channel.setMockMethodCallHandler(null);
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger.setMockMethodCallHandler(channel, null);
   });
 
   test('getPlatformVersion', () async {
