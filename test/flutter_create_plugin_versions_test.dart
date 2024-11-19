@@ -1,23 +1,29 @@
-import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_create_plugin_versions/flutter_create_plugin_versions.dart';
+import 'package:flutter_create_plugin_versions/flutter_create_plugin_versions_platform_interface.dart';
+import 'package:flutter_create_plugin_versions/flutter_create_plugin_versions_method_channel.dart';
+import 'package:plugin_platform_interface/plugin_platform_interface.dart';
+
+class MockFlutterCreatePluginVersionsPlatform 
+    with MockPlatformInterfaceMixin
+    implements FlutterCreatePluginVersionsPlatform {
+
+  @override
+  Future<String?> getPlatformVersion() => Future.value('42');
+}
 
 void main() {
-  const MethodChannel channel = MethodChannel('flutter_create_plugin_versions');
+  final FlutterCreatePluginVersionsPlatform initialPlatform = FlutterCreatePluginVersionsPlatform.instance;
 
-  TestWidgetsFlutterBinding.ensureInitialized();
-
-  setUp(() {
-    channel.setMockMethodCallHandler((MethodCall methodCall) async {
-      return '42';
-    });
-  });
-
-  tearDown(() {
-    channel.setMockMethodCallHandler(null);
+  test('$MethodChannelFlutterCreatePluginVersions is the default instance', () {
+    expect(initialPlatform, isInstanceOf<MethodChannelFlutterCreatePluginVersions>());
   });
 
   test('getPlatformVersion', () async {
-    expect(await FlutterCreatePluginVersions.platformVersion, '42');
+    FlutterCreatePluginVersions flutterCreatePluginVersionsPlugin = FlutterCreatePluginVersions();
+    MockFlutterCreatePluginVersionsPlatform fakePlatform = MockFlutterCreatePluginVersionsPlatform();
+    FlutterCreatePluginVersionsPlatform.instance = fakePlatform;
+  
+    expect(await flutterCreatePluginVersionsPlugin.getPlatformVersion(), '42');
   });
 }

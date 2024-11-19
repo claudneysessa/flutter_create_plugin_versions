@@ -1,4 +1,4 @@
-#include "include/flutter_create_plugin_versions/flutter_create_plugin_versions_plugin.h"
+#include "flutter_create_plugin_versions_plugin.h"
 
 // This must be included before many other Windows headers.
 #include <windows.h>
@@ -10,26 +10,10 @@
 #include <flutter/plugin_registrar_windows.h>
 #include <flutter/standard_method_codec.h>
 
-#include <map>
 #include <memory>
 #include <sstream>
 
-namespace {
-
-class FlutterCreatePluginVersionsPlugin : public flutter::Plugin {
- public:
-  static void RegisterWithRegistrar(flutter::PluginRegistrarWindows *registrar);
-
-  FlutterCreatePluginVersionsPlugin();
-
-  virtual ~FlutterCreatePluginVersionsPlugin();
-
- private:
-  // Called when a method is called on this plugin's channel from Dart.
-  void HandleMethodCall(
-      const flutter::MethodCall<flutter::EncodableValue> &method_call,
-      std::unique_ptr<flutter::MethodResult<flutter::EncodableValue>> result);
-};
+namespace flutter_create_plugin_versions {
 
 // static
 void FlutterCreatePluginVersionsPlugin::RegisterWithRegistrar(
@@ -72,11 +56,4 @@ void FlutterCreatePluginVersionsPlugin::HandleMethodCall(
   }
 }
 
-}  // namespace
-
-void FlutterCreatePluginVersionsPluginRegisterWithRegistrar(
-    FlutterDesktopPluginRegistrarRef registrar) {
-  FlutterCreatePluginVersionsPlugin::RegisterWithRegistrar(
-      flutter::PluginRegistrarManager::GetInstance()
-          ->GetRegistrar<flutter::PluginRegistrarWindows>(registrar));
-}
+}  // namespace flutter_create_plugin_versions
