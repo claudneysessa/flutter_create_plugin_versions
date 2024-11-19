@@ -4,7 +4,7 @@ import 'package:flutter_create_plugin_versions/flutter_create_plugin_versions_pl
 import 'package:flutter_create_plugin_versions/flutter_create_plugin_versions_method_channel.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
-class MockFlutterCreatePluginVersionsPlatform 
+class MockFlutterCreatePluginVersionsPlatform
     with MockPlatformInterfaceMixin
     implements FlutterCreatePluginVersionsPlatform {
 
@@ -23,7 +23,7 @@ void main() {
     FlutterCreatePluginVersions flutterCreatePluginVersionsPlugin = FlutterCreatePluginVersions();
     MockFlutterCreatePluginVersionsPlatform fakePlatform = MockFlutterCreatePluginVersionsPlatform();
     FlutterCreatePluginVersionsPlatform.instance = fakePlatform;
-  
+
     expect(await flutterCreatePluginVersionsPlugin.getPlatformVersion(), '42');
   });
 }

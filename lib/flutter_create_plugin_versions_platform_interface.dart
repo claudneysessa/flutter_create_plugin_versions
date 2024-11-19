@@ -14,7 +14,7 @@ abstract class FlutterCreatePluginVersionsPlatform extends PlatformInterface {
   ///
   /// Defaults to [MethodChannelFlutterCreatePluginVersions].
   static FlutterCreatePluginVersionsPlatform get instance => _instance;
-  
+
   /// Platform-specific implementations should set this with their own
   /// platform-specific class that extends [FlutterCreatePluginVersionsPlatform] when
   /// they register themselves.
