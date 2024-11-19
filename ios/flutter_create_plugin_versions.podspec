@@ -1,6 +1,6 @@
 #
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html.
-# Run `pod lib lint flutter_create_plugin_versions.podspec' to validate before publishing.
+# Run `pod lib lint flutter_create_plugin_versions.podspec` to validate before publishing.
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_create_plugin_versions'
